@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: saam-config
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  APP_DATABASE_URI: "mongodb+srv://root:74wh2hS1ZBrkzbLl@uis.tmhdc.mongodb.net/uis@prod"
+  AWS_S3_BUCKET_NAME: "uis-s3-assets"
+  AWS_S3_REGION: "us-east-2"
+  MAILTRAP_HOST: "send.api.mailtrap.io"
+  MAILTRAP_SENDER_NAME: "UIS"
+  MAILTRAP_SENDER_EMAIL: "no-reply@carlossanjuan.co"
+  DAYJS_START: "2025-01-29"
+  ACADEMIC_YEAR: "2025"
+  ACADEMIC_TERM: "2"
+  VITE_API_URL: "http://localhost:3000"
