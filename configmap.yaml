@@ -15,3 +15,4 @@ data:
   DAYJS_END: "2025-06-20"
   ACADEMIC_YEAR: "2025"
   ACADEMIC_TERM: "2"
+  VITE_API_URL: http://backend-svc:4500

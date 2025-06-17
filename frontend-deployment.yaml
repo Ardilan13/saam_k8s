@@ -15,8 +15,15 @@ spec:
       containers:
         - name: frontend
           image: ardilan13/saam:frontend
+          imagePullPolicy: Always
           ports:
             - containerPort: 5173
+          env:
+            - name: VITE_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: saam-config
+                  key: VITE_API_URL
           envFrom:
             - configMapRef:
                 name: saam-config
