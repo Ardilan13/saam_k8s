@@ -2,6 +2,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: saam-nginx
+    restart: always
     ports:
       - "80:80"
     volumes:
@@ -15,12 +16,14 @@ services:
   saam-frontend:
     image: ardilan13/saam:frontend
     container_name: saam-frontend
+    restart: always
     networks:
       - saam-network
 
   saam-backend:
     image: ardilan13/saam:backend
     container_name: saam-backend
+    restart: always
     environment:
       - JWT_SECRET=${JWT_SECRET}
       - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
