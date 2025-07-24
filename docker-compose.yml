@@ -39,6 +39,18 @@ services:
     networks:
       - saam-network
 
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=6000 # cada hora
+    networks:
+      - saam-network
+
 networks:
   saam-network:
     driver: bridge
