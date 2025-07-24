@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  backend:
+    image: ardilan13/saam:backend
+    container_name: saam-backend
+    ports:
+      - "3000:3000"
+    networks:
+      - saam-network
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
+      - APP_DATABASE_URI=${APP_DATABASE_URI}
+      - MAILTRAP_HOST=${MAILTRAP_HOST}
+      - MAILTRAP_TOKEN=${MAILTRAP_TOKEN}
+      - MAILTRAP_SENDER_NAME=${MAILTRAP_SENDER_NAME}
+      - MAILTRAP_SENDER_EMAIL=${MAILTRAP_SENDER_EMAIL}
+      - DAYJS_START=${DAYJS_START}
+      - DAYJS_END=${DAYJS_END}
+      - ACADEMIC_YEAR=${ACADEMIC_YEAR}
+      - ACADEMIC_TERM=${ACADEMIC_TERM}
+
+  frontend:
+    image: ardilan13/saam:frontend
+    container_name: saam-frontend
+    ports:
+      - "80:5173"
+    networks:
+      - saam-network
+    environment:
+      - VITE_API_URL=http://saam-backend:3000
+
+networks:
+  saam-network:
+    driver: bridge
