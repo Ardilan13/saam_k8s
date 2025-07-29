@@ -5,6 +5,8 @@ Para correr el proyecto de saam usando kubernetes, sigue estos pasos:
 4. **Ejecutar Docker Compose**: Corre el siguiente comando en la terminal:
    ```bash
    docker compose up -d --build --remove-orphans
+   docker service rm saam_saam-backend saam_saam-frontend saam_nginx
+   docker stack deploy --with-registry-auth -c docker-compose.yml saam
    ```
 5. **Verificar el estado**: Puedes verificar que los contenedores estén corriendo con:
    ```bash

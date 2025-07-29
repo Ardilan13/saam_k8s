@@ -7,6 +7,7 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/ssl/letsencrypt:/etc/letsencrypt
+      - ./nginx/maintenance.html:/usr/share/nginx/html/maintenance.html
     deploy:
       replicas: 1
       placement:
@@ -20,7 +21,7 @@ services:
   saam-frontend:
     image: ardilan13/saam:frontend
     deploy:
-      replicas: 1
+      replicas: 2
     networks:
       - saam-network
 
@@ -39,7 +40,7 @@ services:
       - ACADEMIC_YEAR=${ACADEMIC_YEAR}
       - ACADEMIC_TERM=${ACADEMIC_TERM}
     deploy:
-      replicas: 3  # Escala a 3 instancias del backend
+      replicas: 5
       restart_policy:
         condition: on-failure
     networks:
